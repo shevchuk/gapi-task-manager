@@ -1,17 +1,13 @@
 import '../contrib/gapi';
-
-export const config = {
-    // Client ID and API key from the Developer Console
-    CLIENT_ID : '19125975415-9vvkk7lnu602sbkf2hlln59gvli7e40c.apps.googleusercontent.com',
-    API_KEY : 'AIzaSyAgLBR-7uqEa35GYx4jOg9nleb0VezRTPs',
-    DISCOVERY_DOCS : ["https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest"],
-    SCOPES : 'https://www.googleapis.com/auth/tasks'
-}
+import config from '../config'
 
 /**
 *  On load, called to load the auth2 library and API client library.
 */
 export function initGAPI(cb) {
+    if (!config.API_KEY) {
+        alert('Please specify API key in ./src/config.js');
+    }
     window.gapi.load('client:auth2', initClient(cb));
 }
 

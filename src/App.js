@@ -18,7 +18,6 @@ import {
     updateTaskTitle,
     createTask
 } from './actions/index';
-import './App.css';
 import './css/main.css';
 
 class App extends Component {
