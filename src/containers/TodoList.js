@@ -46,7 +46,7 @@ class TodoList extends Component {
                     {this.props.tasks.map((item) => {
                         return (
                             <div key={item.id} className="row app-tasks-todo-item">
-                                <div className="col-xs-1"> 
+                                <div className="col-xs-1 app-tasks-todo-item-checkbox"> 
                                     <input 
                                         id={`checkbox-${item.id}`}
                                         data-task={item.id} 
@@ -55,16 +55,15 @@ class TodoList extends Component {
                                         onChange={this.onTaskStatusClick(this)} />
                                 </div>
                                 <div className="col-xs-11">
-                                    <a href="#"    
-                                        data-tasklist={item.id} 
-                                        >
+                                    <div className="app-tasks-todo-item-title">
                                         <ClickToEdit
                                             customStyle={this.getTaskClassname(item)}
                                             endEditing={this.onTaskEdit.bind(this, item)}>
                                             {item.title? item.title : '<Empty>'}
                                         </ClickToEdit>
-                                    </a>
+                                    
                                     <p className={this.getTaskNoteClassname(item)}>{item.notes}</p>
+                                    </div>
                                 </div>
                             </div>
                         );

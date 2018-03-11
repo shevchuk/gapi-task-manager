@@ -27,7 +27,16 @@
 
 .app-tasks-todo-item {
     padding-top: 10px;
-    padding-left: 10px
+    padding-left: 10px;
+}
+
+.app-tasks-todo-item-checkbox {
+    padding-top: 5px;
+}
+
+.app-tasks-todo-item-title {
+    font-size: 20px;
+    color: #333399;
 }
 
 .app-tasks-todo-item-title-completed {
