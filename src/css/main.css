@@ -1,0 +1,41 @@
+.app {
+    display: box;
+    display: flex;
+}
+
+.app-loading {
+    text-align: center;
+}
+
+.app-tasks-lists {
+    margin-top: 10px;
+    margin-left: 10px;
+    flex-grow: 1;
+    max-width: 30%;
+}
+
+.app-tasks-wrapper {
+    flex-grow: 3;
+    max-width: 70%;
+}
+
+.app-tasks {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.app-tasks-todo-item {
+    padding-top: 10px;
+    padding-left: 10px
+}
+
+.app-tasks-todo-item-title-completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.app-tasks-todo-toolbar {
+    padding-left: 10px;
+    padding-top: 10px;
+}
