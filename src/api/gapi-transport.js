@@ -56,6 +56,17 @@ export function patchTask(task, taskList, patch) {
     });
 }
 
+export function dropTask(taskId, taskList) {
+    return new Promise((resolve) => {
+        window.gapi.client.tasks.tasks.delete({
+            'tasklist': taskList,
+            'task': taskId
+        }).then(function(response) {
+            resolve(response);
+        });
+    });
+}
+
 /**
  *  Initializes the API client library and sets up sign-in state
  *  listeners.

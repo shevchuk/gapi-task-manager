@@ -16,7 +16,8 @@ import {
     completeTask, 
     uncompleteTask, 
     updateTaskTitle,
-    createTask
+    createTask,
+    deleteTask
 } from './actions/index';
 import './css/main.css';
 
@@ -55,6 +56,10 @@ class App extends Component {
     this.props.dispatch(updateTaskTitle(obj.taskId, this.props.selectedTaskList, obj.newTitle));
   }
 
+  onTaskDelete(obj) {
+    this.props.dispatch(deleteTask(obj.taskId, this.props.selectedTaskList));
+  }
+
   render() {
     let {tasksLists, selectedTaskList, tasks, isLoadingTaskList, isToolbarVisible} = this.props;
 
@@ -77,7 +82,8 @@ class App extends Component {
               onAdd={this.onAddTodo.bind(this)}/>
             <TodoList 
               tasks={tasks} 
-              onStatusChange={this.onStatusChange.bind(this)} 
+              onStatusChange={this.onStatusChange.bind(this)}
+              onTaskDelete={this.onTaskDelete.bind(this)} 
               onTaskTitleChange={this.onTaskTitleChange.bind(this)}/>
           </div>
         </div>

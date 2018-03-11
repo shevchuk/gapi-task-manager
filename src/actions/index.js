@@ -1,4 +1,4 @@
-import {signIn, loadTasks, patchTask, createNewTask} from '../api/gapi-transport';
+import {signIn, loadTasks, patchTask, createNewTask, dropTask} from '../api/gapi-transport';
 export const REQUEST_TASKSLIST = 'REQUEST_TASKSLIST';
 export const RECEIVE_TASKSLIST = 'RECEIVE_TASKSLIST';
 export const SELECT_TASKLIST = 'SELECT_TASKLIST';
@@ -18,6 +18,9 @@ export const RECEIVE_UPDATE_TASK_TITLE = 'RECEIVE_UPDATE_TASK_TITLE';
 
 export const REQUEST_CREATE_TASK = 'REQUEST_CREATE_TASK';
 export const RECEIVE_CREATE_TASK = 'RECEIVE_CREATE_TASK';
+
+export const REQUEST_DELETE_TASK = 'REQUEST_DELETE_TASK';
+export const RECEIVE_DELETE_TASK = 'RECEIVE_DELETE_TASK';
 
 export const selectTaskList = (taskList) => {
     return {
@@ -128,6 +131,21 @@ export const receiveCreateTask = (result) => {
     }
 }
 
+export const requestDeleteTask = (taskId, taskList) => {
+    return {
+        type : REQUEST_DELETE_TASK,
+        taskId: taskId,
+        taskList: taskList
+    }    
+}
+
+export const receiveDeleteTask = (result) => {
+    return {
+        type : RECEIVE_DELETE_TASK,
+        tasks: result
+    }
+}
+
 export const createTask = (taskList) => {
     return dispatch => {
         dispatch(requestCreateTask(taskList));
@@ -135,6 +153,16 @@ export const createTask = (taskList) => {
             dispatch(receiveCreateTask(response.result));
             dispatch(fetchTasks(taskList));
         })
+    }
+}
+
+export const deleteTask = (taskId, taskList) => {
+    return dispatch => {
+        dispatch(requestDeleteTask(taskId, taskList));
+        return dropTask(taskId, taskList).then((response) => {
+            dispatch(receiveDeleteTask(response.result));
+            dispatch(fetchTasks(taskList));
+        });
     }
 }
 

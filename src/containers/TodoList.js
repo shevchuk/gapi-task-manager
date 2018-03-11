@@ -14,6 +14,10 @@ class TodoList extends Component {
         }
     }
 
+    onTaskDelete(item) {
+        this.props.onTaskDelete({taskId: item.id});
+    }
+
     getTaskClassname(item) {
         let className = 'list-group-item-heading ';
 
@@ -54,7 +58,7 @@ class TodoList extends Component {
                                         type="checkbox" 
                                         onChange={this.onTaskStatusClick(this)} />
                                 </div>
-                                <div className="col-xs-11">
+                                <div className="col-xs-10">
                                     <div className="app-tasks-todo-item-title">
                                         <ClickToEdit
                                             customStyle={this.getTaskClassname(item)}
@@ -64,6 +68,11 @@ class TodoList extends Component {
                                     
                                     <p className={this.getTaskNoteClassname(item)}>{item.notes}</p>
                                     </div>
+                                </div>
+                                <div className="col-xs-1">
+                                    <button type="button" onClick={this.onTaskDelete.bind(this, item)}>
+                                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </div>
                         );
@@ -78,8 +87,8 @@ class TodoList extends Component {
 TodoList.propTypes = {
     tasks: PropTypes.array.isRequired,
     onStatusChange: PropTypes.func.isRequired,
+    onTaskDelete: PropTypes.func.isRequired,
     onTaskTitleChange: PropTypes.func.isRequired
 }
-
 
 export default TodoList;

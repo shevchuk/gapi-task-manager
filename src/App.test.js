@@ -98,7 +98,8 @@ function setup() {
       }
     ],
     onStatusChange: jest.fn(),
-    onTaskTitleChange: jest.fn()
+    onTaskTitleChange: jest.fn(),
+    onTaskDelete: jest.fn()
   }
  
   const enzymeWrapper = mount(<TodoList {...props} />)
