@@ -28,3 +28,6 @@ See the section about [running tests](#running-tests) for more information.
 
 On App start a popup with Google authentication screen will be opened where you need to enter
 your credentials.
+
+## Further things
+- Move components from containers to components
