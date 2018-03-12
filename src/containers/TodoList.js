@@ -70,9 +70,12 @@ class TodoList extends Component {
                                     </div>
                                 </div>
                                 <div className="col-xs-1">
-                                    <button type="button" onClick={this.onTaskDelete.bind(this, item)}>
-                                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                    </button>
+                                    { 
+                                        this.props.tasks.length > 1 ?
+                                                    <button type="button" onClick={this.onTaskDelete.bind(this, item)}>
+                                                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                    </button> : null
+                                    }
                                 </div>
                             </div>
                         );
